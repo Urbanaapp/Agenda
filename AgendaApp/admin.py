@@ -6,7 +6,7 @@ class ContatoAdmin(admin.ModelAdmin):
     #colunas exibidas
     list_display = ['nome','email','cep','cidade','estado']
     # filtros
-    # list_filter =['data_nascimento','cidade','estado']
+    #  list_filter =['data_nascimento','cidade','estado']
     #colunas com link para editar
     list_display_links = ['nome','email']
 
