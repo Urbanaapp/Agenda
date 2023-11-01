@@ -14,6 +14,14 @@ class Contato(models.Model):
         ('V','viúvo')
         ]
 
+    UFS = [
+        ('SP','São Paulo'),
+        ('MG','Minas Gerais'),
+        ('RJ','Rio de Janeiro'),
+        ('ES','Espirito Santo'),      
+        ('SC','Santa Catarina'),
+        ('RS','Rio Grande do Sul'),
+    ]
 
     nome = models.CharField(max_length=200)
     apelido = models.CharField(max_length=30, blank=True,null=True)   
@@ -25,7 +33,7 @@ class Contato(models.Model):
     cep = models.CharField(max_length=9)
     bairro = models.CharField(max_length=100)
     cidade = models.CharField(max_length=100)
-    estado = models.CharField(max_length=50)
+    estado = models.CharField(max_length=2, choices= UFS)
     estado_civil = models.CharField(max_length=1, choices=ESTADO_CIVIS, null =True)
 
     def __str__(self):
