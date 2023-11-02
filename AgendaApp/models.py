@@ -8,6 +8,9 @@ UFS = [
         ('SC','Santa Catarina'),
         ('RS','Rio Grande do Sul'),
     ]
+
+
+
 class Cidade(models.Model):
     nome = models.CharField(max_length=50)
     uf = models.CharField(max_length=2, choices=UFS)
@@ -49,5 +52,22 @@ class Contato(models.Model):
         verbose_name = ('Pessoa')
         verbose_name_plural =('Pessoas')
 
+class Telefone(models.Model):
+    TIPOS_TELEFONE = [
+        ('CEL','Celular'),
+        ('RES','Residencial'),
+        ('COM','Comercial'),
+        ('REC','Recado'),
+    ]
 
+    Contato = models.ForeignKey(Contato, on_delete=models.CASCADE)
+    ddd = models.IntegerField(verbose_name='DDD')
+    numero = models.CharField(max_length=10)
+    tipo = models.CharField(max_length=3, choices= TIPOS_TELEFONE)
+    IsWhatsApp =models.BooleanField(verbose_name='Tem WhatsApp ?')
+
+    def __str__(self):
+        return f'({self.ddd}){self.numero}'
+
+    
 
