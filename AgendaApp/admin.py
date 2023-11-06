@@ -1,5 +1,5 @@
 from django.contrib import admin
-from AgendaApp.models import Contato, Cidade, Telefone
+from AgendaApp.models import Contato, Cidade, Telefone, Interesse
 
 # Register your models here.
 
@@ -15,6 +15,10 @@ class ContatoAdmin(admin.ModelAdmin):
     list_display_links = ['nome','email']
     search_fields = ['nome','apelido']
     inlines = [Telefones]
+    filter_horizontal = ['Interesse']
+
 admin.site.register(Contato, ContatoAdmin)
 admin.site.register(Cidade)
 admin.site.register(Telefone)
+admin.site.register(Interesse)
+    
